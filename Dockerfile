@@ -15,12 +15,10 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY . /usr/src/app
 
-RUN yarn build
-
 
 ENV PORT=3000
 ENV NODE_ENV=production
 
 # Bundle app source
 EXPOSE 3000
-CMD [ "yarn", "start:prod" ]
+CMD [ "yarn", "start" ]
