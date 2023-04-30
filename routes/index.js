@@ -22,7 +22,7 @@ router.get('/:time/:folder', function (req, res, next) {
       t = moment().subtract(1, 'days')
     }
   }
-  const dir = path.join('/upload', moment().format('YYYY-MM-DD'), folder)
+  const dir = path.join('/upload', t.format('YYYY-MM-DD'), folder)
   console.log(dir);
   res.render('index', { title: 'Express', file: dir });
 });
