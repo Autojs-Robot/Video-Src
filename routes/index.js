@@ -37,7 +37,7 @@ router.get('/upload/:time/:folder', function (req, res, next) {
       t = moment().subtract(1, 'days')
     }
   }
-  const dir = path.join(moment().format('YYYY-MM-DD'), folder)
+  const dir = path.join("/data", moment().format('YYYY-MM-DD'), folder)
   const filePath = getFile(dir);
   res.sendFile(filePath);
 });
