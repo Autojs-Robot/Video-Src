@@ -23,7 +23,6 @@ router.get('/:time/:folder', function (req, res, next) {
     }
   }
   const dir = path.join('/upload', t.format('YYYY-MM-DD'), folder)
-  console.log(dir);
   res.render('index', { title: 'Express', file: dir });
 });
 
@@ -38,8 +37,8 @@ router.get('/upload/:time/:folder', function (req, res, next) {
     }
   }
   const dir = path.join("/data", t.format('YYYY-MM-DD'), folder)
-  const filePath = getFile(dir);
-  res.sendFile(filePath);
+  const filename = getFile(dir);
+  res.sendFile(path.resolve(dir, filename));
 });
 
 module.exports = router;
