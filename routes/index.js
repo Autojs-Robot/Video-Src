@@ -38,7 +38,13 @@ router.get('/upload/:time/:folder', function (req, res, next) {
   }
   const dir = path.join("/data", t.format('YYYY-MM-DD'), folder)
   const filename = getFile(dir);
-  res.sendFile(path.resolve(dir, filename));
+  res.sendFile(path.resolve(dir, filename), (err) => {
+    if (!err) {
+      const name = filename.toString().replace(/\//g, '-')
+      fs.rename(filename, path.join("/data", "used", name))
+    }
+  });
+
 });
 
 module.exports = router;
