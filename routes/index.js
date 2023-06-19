@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var fs = require('fs');
 var moment = require('moment');
 var getFile = require('../getFile');
 var router = express.Router();
