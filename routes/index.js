@@ -43,7 +43,7 @@ router.get('/upload/:time/:folder', function (req, res, next) {
     if (!err) {
       const name = filename.toString().replace(/\//g, '-')
       const from = filename
-      const to = th.join("/data", "used", name)
+      const to = path.join("/data", "used", name)
       fs.rename(from, to, (err) => {
         console.log(from, "=>", to, err);
       })
