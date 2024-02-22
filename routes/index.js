@@ -19,11 +19,7 @@ router.get('/data/:time/:folder/:name', function (req, res, next) {
   console.log("下载文件", req.path);
   res.sendFile(from, (err) => {
     if (!err) {
-      const name = from.toString().replace(/\//g, '-')
-      const to = path.join("/data", "used", name)
-      fs.rename(from, to, (err) => {
-        console.log(from, "=>", to, err);
-      })
+      fs.unlink(from, () => {})
     }
   });
 });
